@@ -15,7 +15,7 @@ spec:
       - name: storedemo
         image: gcr.io/playground-311121/storedemo:0.0.1-SNAPSHOT
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         resources:
           limits:
             cpu: 500m
@@ -30,7 +30,8 @@ metadata:
     run: storedemo
 spec:
   ports:
-  - port: 80
+    port: 80
+    targetPort: 8080
   selector:
     run: storedemo
 

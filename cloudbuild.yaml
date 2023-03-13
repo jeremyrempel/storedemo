@@ -1,8 +1,7 @@
 steps:
-  # build the container image
-- name: "gcr.io/cloud-builders/docker"
-  args: ["./gradlew", "bootBuildImage"]
-  # push container image
+- name: gradle:8.0.2-jdk17
+  entrypoint: gradle
+  args: ['bootBuildImage']
 - name: "gcr.io/cloud-builders/docker"
   args: ["push", "gcr.io/playground-311121/storedemo:latest"]
   # deploy container image to GKE

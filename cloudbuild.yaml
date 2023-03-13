@@ -2,14 +2,11 @@ steps:
 - name: gradle:8.0.2-jdk17
   entrypoint: gradle
   args: ['bootBuildImage']
-- name: "gcr.io/cloud-builders/docker"
-  args: ["push", "gcr.io/playground-311121/storedemo:latest"]
-  # deploy container image to GKE
 - name: "gcr.io/cloud-builders/gke-deploy"
   args:
   - run
   - --filename=kubernetes-resource-file
-  - --image=gcr.io/playground-311121/storedemo:latest
+  - --image=docker.io/library/store-demo:0.0.1-SNAPSHOT
   - --location=us-central1
   - --cluster=autopilot-cluster-1
 

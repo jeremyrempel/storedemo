@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: storedemo
+spec:
+  selector:
+    matchLabels:
+      run: storedemo
+  template:
+    metadata:
+      labels:
+        run: storedemo
+    spec:
+      containers:
+      - name: storedemo
+        image: docker.io/library/store-demo:0.0.1-SNAPSHOT
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: storedemo
+  labels:
+    run: storedemo
+spec:
+  ports:
+  - port: 80
+  selector:
+    run: storedemo
+

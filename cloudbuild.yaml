@@ -1,12 +1,12 @@
 steps:
 - name: gradle:8.0.2-jdk17
   entrypoint: gradle
-  args: ['bootBuildImage']
+  args: ['bootBuildImage', '--imageName', 'gcr.io/playground-311121/storedemo:0.0.1-SNAPSHOT']
 - name: "gcr.io/cloud-builders/gke-deploy"
   args:
   - run
   - --filename=k8s.yaml
-  - --image=docker.io/library/store-demo:0.0.1-SNAPSHOT
+  - --image=gcr.io/playground-311121/storedemo:0.0.1-SNAPSHOT
   - --location=us-central1
   - --cluster=autopilot-cluster-1
 

@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: storedemo
-        image: docker.io/library/store-demo:0.0.1-SNAPSHOT
+        image: gcr.io/playground-311121/storedemo:0.0.1-SNAPSHOT
         ports:
         - containerPort: 80
         resources:
